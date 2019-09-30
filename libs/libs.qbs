@@ -1,11 +1,10 @@
 import qbs
-//import Stm32Library
+import Stm32Library
 
-Product {
+Stm32Library {
     Depends { name: "cpp" }
 
     name: "Libraries"
-    type: "staticlibrary"
 
     cpp.includePaths: [
         ".",
@@ -13,13 +12,6 @@ Product {
         "device",
         "spl"
     ]
-
-	cpp.driverFlags: [
-		"-mcpu=cortex-m4",
-		"-mfloat-abi=hard",
-		"-mfpu=fpv4-sp-d16",
-		"-specs=nosys.specs"
-	]
 
     cpp.defines: [
         "STM32F4XX",

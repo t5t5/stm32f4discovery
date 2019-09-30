@@ -1,11 +1,6 @@
 #include "stm32f4xx.h"
 
-static void delay(uint32_t counts)
-{
-    for (uint32_t index = 0u; index < counts; ++index)
-        __asm("nop");
-}
-
+static void delay(uint32_t counts);
 
 int main()
 {
@@ -22,7 +17,6 @@ int main()
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-
     /* Enable the SHUTDOWN/PC13 Clock */
     GPIO_SetBits(GPIOD,GPIO_Pin_13);
     GPIO_ResetBits(GPIOD,GPIO_Pin_12);
@@ -32,4 +26,10 @@ int main()
 		GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
         delay(100000u);
     }
+}
+
+static void delay(uint32_t counts)
+{
+    for (uint32_t index = 0u; index < counts; ++index)
+        __asm("nop");
 }
