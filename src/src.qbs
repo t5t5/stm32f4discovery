@@ -1,12 +1,16 @@
 import qbs
 
 CppApplication {
+
+    Depends { name: "cpp" }
+    Depends { name: "Libraries" }
+
     condition: {
         if (!qbs.architecture.contains("arm"))
             return false;
         return qbs.toolchain.contains("gcc")
     }
-    name: "stm32f4discovery"
+    name: "src"
     cpp.cLanguageVersion: "c99"
     cpp.positionIndependentCode: false
 
@@ -20,19 +24,20 @@ CppApplication {
         ]
     }
 
-	Group {
-		condition: qbs.toolchain.contains("gcc")
-		prefix: "gcc/"
-		name: "Startup"
-		fileTags: ["asm"]
-		files: ["startup.s"]
-	}
+//	Group {
+//		condition: qbs.toolchain.contains("gcc")
+//		prefix: "gcc/"
+//		name: "Startup"
+//		fileTags: ["asm"]
+//		files: ["startup.s"]
+//	}
 	Group {
 		condition: qbs.toolchain.contains("gcc")
 		prefix: "gcc/"
 		name: "Linker Script"
 		fileTags: ["linkerscript"]
-		files: ["flash.ld"]
+//		files: ["flash.ld"]
+		files: ["stm32F_flash_ROAarray.ld"]
 	}
 
     Group {

@@ -53,6 +53,7 @@ import qbs
 Project {
     name: "stm32f4discovery"
     references: [
-        "blueblink/blueblink.qbs"
+        "libs/libs.qbs",
+        "src/src.qbs",
     ]
 }
