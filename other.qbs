@@ -3,12 +3,12 @@ import qbs
 Product {
     Group {
         name: "ldscripts"
-		fileTags: "other"
+        fileTags: "other"
         files: "ldscripts/*"
     }
     Group {
         name: "qbs-import"
-		fileTags: "other"
+        fileTags: "other"
         files: "qbs/**"
     }
 }
